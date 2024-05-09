@@ -13,8 +13,10 @@ class PlayState extends FlxState
 {
 	var bg:FlxSprite;
 
+	static inline var playarea_x:Int = 28;
+	static inline var playarea_y:Int = 0;
 	static inline var gridwidth:Int = 10;
-	static inline var gridheight:Int = 10;
+	static inline var gridheight:Int = 20;
 	static inline var tile_w:Int = 14;
 	static inline var tile_h:Int = 12;
 
@@ -91,8 +93,8 @@ class PlayState extends FlxState
 			{
 				var block:FlxSprite = new FlxSprite();
 				block.loadGraphic("assets/images/blocks.png", true, tile_w, tile_h);
-				block.x = 40 + i * tile_w;
-				block.y = 20 + j * tile_h;
+				block.x = playarea_x + i * tile_w;
+				block.y = playarea_y + j * tile_h;
 				blocks.add(block);
 				foundmask.push(true);
 			}
