@@ -35,7 +35,7 @@ class Menu extends FlxState
 		// if not playing music
 		if (FlxG.sound.music == null || FlxG.sound.music.playing == false || playingendmusic)
 		{
-			FlxG.sound.playMusic(AssetPaths.music__ogg, 0.5, true);
+			FlxG.sound.playMusic(AssetPaths.music__mp3, 0.5, true);
 		}
 
 		backdrop = new FlxBackdrop("assets/images/titlebg.png");
@@ -62,7 +62,7 @@ class Menu extends FlxState
 
 		if (FlxG.keys.justPressed.X || FlxG.keys.justPressed.C)
 		{
-			FlxG.sound.play(AssetPaths.start__ogg);
+			FlxG.sound.play(AssetPaths.start__mp3);
 			// flicker prompt sprite
 			FlxFlicker.flicker(promptimage, 1, 0.1, null, true, loadGame);
 		}

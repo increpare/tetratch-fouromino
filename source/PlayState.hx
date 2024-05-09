@@ -178,7 +178,7 @@ class PlayState extends FlxState
 
 	function placeBlock()
 	{
-		FlxG.sound.play(AssetPaths.drop__ogg);
+		FlxG.sound.play(AssetPaths.drop__mp3);
 
 		if (p_shape >= 0)
 		{
@@ -217,7 +217,7 @@ class PlayState extends FlxState
 			// center in screen
 			lostText.x = (FlxG.width - lostText.width) / 2;
 			lostText.y = (FlxG.height - lostText.height) / 2;
-			FlxG.sound.play(AssetPaths.lose__ogg);
+			FlxG.sound.play(AssetPaths.lose__mp3);
 			gameover = true;
 			return;
 		}
@@ -238,7 +238,7 @@ class PlayState extends FlxState
 			var winText = new FlxSprite(0, 0, "assets/images/wonmessage.png");
 			add(winText);
 
-			FlxG.sound.playMusic("assets/music/endtrack.ogg", 1.0, true);
+			FlxG.sound.playMusic("assets/music/endtrack.mp3", 1.0, true);
 			Menu.playingendmusic = true;
 
 			gameover = true;
@@ -350,7 +350,7 @@ class PlayState extends FlxState
 	{
 		if (FlxG.sound.music == null || FlxG.sound.music.playing == false || Menu.playingendmusic)
 		{
-			FlxG.sound.playMusic(AssetPaths.music__ogg, 0.5, true);
+			FlxG.sound.playMusic(AssetPaths.music__mp3, 0.5, true);
 			Menu.playingendmusic = false;
 		}
 
@@ -910,7 +910,7 @@ class PlayState extends FlxState
 
 		if (removedcount > 0)
 		{
-			FlxG.sound.play(AssetPaths.match2__ogg, 0.5);
+			FlxG.sound.play(AssetPaths.match2__mp3, 0.5);
 		}
 	}
 
