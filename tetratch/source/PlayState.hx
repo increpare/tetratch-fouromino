@@ -15,6 +15,8 @@ class PlayState extends FlxState
 
 	static inline var gridwidth:Int = 10;
 	static inline var gridheight:Int = 10;
+	static inline var tile_w:Int = 14;
+	static inline var tile_h:Int = 12;
 
 	var px:Int = Std.int(gridwidth / 2);
 	var py:Int = Std.int(gridheight / 2);
@@ -65,8 +67,8 @@ class PlayState extends FlxState
 			}
 		}
 
-		cursor.x = 40 + px * 8 - 8; // cursor sprite has weird offset
-		cursor.y = 20 + py * 8 - 8;
+		cursor.x = 40 + px * tile_w - tile_w; // cursor sprite has weird offset
+		cursor.y = 20 + py * tile_h - tile_h;
 		cursor.animation.frameIndex = pstate;
 	}
 
@@ -88,9 +90,9 @@ class PlayState extends FlxState
 			for (j in 0...gridheight)
 			{
 				var block:FlxSprite = new FlxSprite();
-				block.loadGraphic("assets/images/blocks.png", true, 8, 8);
-				block.x = 40 + i * 8;
-				block.y = 20 + j * 8;
+				block.loadGraphic("assets/images/blocks.png", true, tile_w, tile_h);
+				block.x = 40 + i * tile_w;
+				block.y = 20 + j * tile_h;
 				blocks.add(block);
 				foundmask.push(true);
 			}
