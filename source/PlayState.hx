@@ -3,11 +3,13 @@ package;
 import flixel.*;
 import flixel.FlxBasic.FlxType;
 import flixel.effects.particles.FlxEmitter;
+import flixel.graphics.frames.FlxTileFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxGroup;
 import flixel.group.FlxSpriteGroup;
 import flixel.input.keyboard.FlxKey;
 import flixel.input.keyboard.FlxKeyboard;
+import flixel.math.FlxPoint;
 import flixel.util.FlxSave;
 
 /*
@@ -360,8 +362,11 @@ class PlayState extends FlxState
 			FlxG.mouse.visible = false;
 		}
 		super.create();
+
 		bg = new FlxSprite(0, 0, "assets/images/background.png");
 		add(bg);
+
+		final blockFrames = createBlockFrames();
 
 		blocks = new FlxTypedGroup<FlxSprite>();
 		foundmask = [];
@@ -370,7 +375,7 @@ class PlayState extends FlxState
 			for (j in 0...gridheight)
 			{
 				var block:FlxSprite = new FlxSprite();
-				block.loadGraphic("assets/images/blocks.png", true, tile_w + 1, tile_h);
+				block.frames = blockFrames;
 				block.x = playarea_x + i * tile_w;
 				block.y = playarea_y + j * tile_h;
 				blocks.add(block);
@@ -385,7 +390,7 @@ class PlayState extends FlxState
 			for (j in 0...4)
 			{
 				var spr:FlxSprite = new FlxSprite();
-				spr.loadGraphic("assets/images/blocks.png", true, tile_w + 1, tile_h);
+				spr.frames = blockFrames;
 				spr.x = i * tile_w;
 				spr.y = j * tile_h;
 				spr.visible = false;
@@ -400,7 +405,7 @@ class PlayState extends FlxState
 			for (j in 0...4)
 			{
 				var spr:FlxSprite = new FlxSprite();
-				spr.loadGraphic("assets/images/blocks.png", true, tile_w + 1, tile_h);
+				spr.frames = blockFrames;
 				spr.x = i * tile_w;
 				spr.y = j * tile_h;
 				nextblock_spr.add(spr);
@@ -450,6 +455,15 @@ class PlayState extends FlxState
 		chooseNext();
 		placeBlock();
 		applystate();
+	}
+
+	// creates the frames for blocks and pads each frame to reduce artifacts
+	function createBlockFrames()
+	{
+		final asset = "assets/images/blocks.png";
+		final size = FlxPoint.get(tile_w, tile_h);
+		final padding = FlxPoint.get(1, 1);
+		return FlxTileFrames.fromBitmapAddSpacesAndBorders(asset, size, null, padding);
 	}
 
 	var next_display_offset_x:Array<Int> = [
