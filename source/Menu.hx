@@ -24,6 +24,7 @@ class Menu extends FlxState
 {
 	var backdrop:FlxBackdrop;
 	var titleimage:FlxSprite;
+	var byimage:FlxSprite;
 	var promptimage:FlxSprite;
 
 	public static var playingendmusic:Bool = false;
@@ -45,6 +46,9 @@ class Menu extends FlxState
 
 		titleimage = new FlxSprite(0, 0, "assets/images/titlefg.png");
 		add(titleimage);
+
+		byimage = new FlxSprite(0, 0, "assets/images/titleby.png");
+		add(byimage);
 
 		promptimage = new FlxSprite(0, 0, "assets/images/titleprompt.png");
 		add(promptimage);
