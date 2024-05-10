@@ -12,14 +12,6 @@ import flixel.input.keyboard.FlxKeyboard;
 import flixel.math.FlxPoint;
 import flixel.util.FlxSave;
 
-/*
-	sfx needed
-	start game S
-	lose D
-	drop piece D
-	match D
-	win
- */
 class PlayState extends FlxState
 {
 	var bg:FlxSprite;
@@ -64,6 +56,9 @@ class PlayState extends FlxState
 	var dropPhase:Float = 0;
 	var leftPhase:Float = 0;
 	var rightPhase:Float = 0;
+
+	var lockResetCount:Int = 0;
+	var lockResetLimit:Int = 5;
 
 	public function canFit(x, y, rot)
 	{
@@ -166,6 +161,32 @@ class PlayState extends FlxState
 			placeBlock();
 		}
 
+		if (moved)
+		{
+			if (dy > 0)
+			{
+				lockResetCount = 0;
+			}
+			else if (lockResetCount < lockResetLimit)
+			{
+				// instead of a full drop timer reset, I push it back up to
+				// 1 second if it's below than that.  This is because this game's
+				// drop time of 2 seconds is quite extreme by tetris standards.
+				// https://tetris.fandom.com/wiki/Infinity
+				if (dropInterval > 1)
+				{
+					if (dropInterval - dropPhase < 1)
+					{
+						dropPhase = dropInterval - 1;
+					}
+				}
+				else
+				{
+					dropPhase = 0;
+				}
+				lockResetCount++;
+			}
+		}
 		applystate();
 	}
 
