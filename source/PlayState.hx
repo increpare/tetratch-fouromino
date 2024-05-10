@@ -1029,7 +1029,7 @@ class PlayState extends FlxState
 				dropPhase -= dropInterval;
 				dodrop = true;
 			}
-			dodrop = false;
+			// dodrop = false;
 		}
 		if (dodrop)
 		{
