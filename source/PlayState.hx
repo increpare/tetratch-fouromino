@@ -765,9 +765,9 @@ class PlayState extends FlxState
 		],
 		[
 			// purple plus
+			1,
+			1,
 			2,
-			1,
-			1,
 			1
 		],
 		[
