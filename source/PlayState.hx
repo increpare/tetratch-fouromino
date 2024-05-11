@@ -737,7 +737,7 @@ class PlayState extends FlxState
 		// for each color, include all rotations
 		[
 			// cyan, LONG
-			2,
+			1,
 			0,
 			2,
 			0
@@ -751,9 +751,9 @@ class PlayState extends FlxState
 		],
 		[
 			// red s
-			3,
 			1,
-			3,
+			2,
+			2,
 			1
 		],
 		[
@@ -772,8 +772,8 @@ class PlayState extends FlxState
 		],
 		[
 			// green Z
-			2,
-			2,
+			1,
+			1,
 			2,
 			2
 		],
