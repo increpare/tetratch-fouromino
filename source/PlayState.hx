@@ -740,7 +740,7 @@ class PlayState extends FlxState
 			1,
 			0,
 			2,
-			0
+			5 // invalid, but doesn't matter, this rotation is same as #1
 		],
 		[
 			// yellow, 2x2
@@ -860,6 +860,10 @@ class PlayState extends FlxState
 				{
 					for (j in (-4)...gridheight)
 					{
+						if (origin_offsets[shape_i][rot_i] >= 4)
+						{
+							continue;
+						}
 						var sample_position_x = i + 1;
 						var sample_position_y = j + origin_offsets[shape_i][rot_i];
 
