@@ -855,15 +855,16 @@ class PlayState extends FlxState
 			for (rot_i in 0...rots.length)
 			{
 				var rot = rots[rot_i];
+				if (origin_offsets[shape_i][rot_i] >= 4)
+				{
+					continue;
+				}
+
 				// for each block
 				for (i in (-4)...gridwidth)
 				{
 					for (j in (-4)...gridheight)
 					{
-						if (origin_offsets[shape_i][rot_i] >= 4)
-						{
-							continue;
-						}
 						var sample_position_x = i + 1;
 						var sample_position_y = j + origin_offsets[shape_i][rot_i];
 
@@ -896,8 +897,6 @@ class PlayState extends FlxState
 							}
 							if (match)
 							{
-								gotten_forms[shape_i] = true;
-
 								checkGameOver();
 								trace("found shape " + shape_i + " w/ rotation " + rot_i + " at " + i + ", " + j);
 								var pointInTetromino_x = i + 1;
@@ -907,6 +906,7 @@ class PlayState extends FlxState
 								trace("fillarea " + fillarea);
 								if (fillarea == 4)
 								{
+									gotten_forms[shape_i] = true;
 									for (k in 0...rot.length)
 									{
 										for (l in 0...rot[k].length)
