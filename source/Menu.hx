@@ -55,6 +55,7 @@ class Menu extends FlxState
 	}
 
 	var time:Float;
+	var leaving:Bool = false;
 
 	override public function update(elapsed:Float)
 	{
@@ -64,8 +65,9 @@ class Menu extends FlxState
 		// wobble titleimage over time sinusodially
 		titleimage.angle = Math.sin(time / 10) * 5;
 
-		if (FlxG.keys.justPressed.X || FlxG.keys.justPressed.C)
+		if (!leaving && (FlxG.keys.justPressed.X || FlxG.keys.justPressed.C))
 		{
+			leaving = true;
 			FlxG.sound.play(AssetPaths.start__mp3);
 			// flicker prompt sprite
 			FlxFlicker.flicker(promptimage, 1, 0.1, null, true, loadGame);
