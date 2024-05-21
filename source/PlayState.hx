@@ -897,7 +897,6 @@ class PlayState extends FlxState
 							}
 							if (match)
 							{
-								checkGameOver();
 								trace("found shape " + shape_i + " w/ rotation " + rot_i + " at " + i + ", " + j);
 								var pointInTetromino_x = i + 1;
 								var pointInTetromino_y = j + origin_offsets[shape_i][rot_i];
@@ -918,6 +917,7 @@ class PlayState extends FlxState
 										}
 									}
 								}
+								checkGameOver();
 							}
 						}
 					}
